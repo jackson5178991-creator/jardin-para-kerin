@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Kerin 🌻</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #07131a;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ESTRELLAS */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .8;
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, #fff4b0 1px, transparent 1px),
+        radial-gradient(circle, white 1px, transparent 1px);
+    background-size: 120px 120px, 190px 190px, 260px 260px;
+    background-position: 10px 20px, 70px 100px, 130px 40px;
+}
+
+/* PANTALLA INICIAL */
+
+#inicio {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    background:
+        radial-gradient(circle at 50% 25%, rgba(255,220,100,.12), transparent 30%),
+        linear-gradient(#07131f, #10251c);
+}
+
+.inicio-contenido {
+    max-width: 700px;
+    animation: aparecer 2s ease;
+}
+
+.flor-inicio {
+    font-size: 70px;
+    animation: flotar 3s ease-in-out infinite;
+}
+
+h1 {
+    color: #ffe27a;
+    font-size: clamp(3rem, 10vw, 6rem);
+    margin: 10px 0;
+    text-shadow: 0 0 35px rgba(255,220,80,.25);
+}
+
+.subtitulo {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    opacity: .9;
+}
+
+.boton {
+    margin-top: 25px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 40px;
+    background: #ffd85c;
+    color: #283313;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 8px 30px rgba(255,215,80,.25);
+}
+
+.boton:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+/* JARDÍN */
+
+#jardin {
+    display: none;
+    min-height: 100vh;
+    background:
+        linear-gradient(
+            to bottom,
+            #081624 0%,
+            #102b20 45%,
+            #173d20 100%
+        );
+    padding-bottom: 80px;
+}
+
+.encabezado {
+    text-align: center;
+    padding: 70px 20px 20px;
+}
+
+.encabezado h2 {
+    color: #ffe27a;
+    font-size: clamp(2.3rem, 7vw, 4rem);
+    margin: 0 0 15px;
+}
+
+.encabezado p {
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.7;
+    opacity: .85;
+}
+
+/* LUNA */
+
+.luna {
+    position: absolute;
+    top: 60px;
+    right: 9%;
+    width: 80px;
+    height: 80px;
+    background: #fff3bd;
+    border-radius: 50%;
+    box-shadow: 0 0 45px rgba(255,240,170,.45);
+}
+
+/* CAMPO */
+
+.campo {
+    position: relative;
+    max-width: 1000px;
+    height: 520px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 35px;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            rgba(75,130,55,.8),
+            rgba(20,55,30,.4) 55%,
+            transparent 75%
+        );
+}
+
+.pasto {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35%;
+
+    background:
+        repeating-linear-gradient(
+            75deg,
+            transparent 0 15px,
+            rgba(90,150,70,.25) 16px 18px
+        );
+}
+
+/* FLORES */
+
+.flor {
+    position: absolute;
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 48px;
+    cursor: pointer;
+    filter: drop-shadow(0 7px 7px rgba(0,0,0,.3));
+    animation: balanceo 3s ease-in-out infinite;
+    transition: .3s;
+}
+
+.flor:hover {
+    transform: scale(1.25);
+    filter:
+        drop-shadow(0 0 15px rgba(255,225,90,.8))
+        drop-shadow(0 7px 7px rgba(0,0,0,.3));
+}
+
+.f1 { left: 8%; bottom: 18%; }
+.f2 { left: 23%; bottom: 35%; animation-delay: -.8s; }
+.f3 { left: 43%; bottom: 14%; animation-delay: -1.5s; }
+.f4 { left: 62%; bottom: 32%; animation-delay: -.4s; }
+.f5 { left: 80%; bottom: 17%; animation-delay: -2s; }
+.f6 { left: 51%; bottom: 55%; animation-delay: -1s; }
+.f7 { left: 14%; bottom: 57%; animation-delay: -2.2s; }
+
+@keyframes balanceo {
+    0%,100% {
+        transform: rotate(-3deg);
+    }
+    50% {
+        transform: rotate(5deg) translateY(-5px);
+    }
+}
+
+/* MENSAJE */
+
+.mensaje {
+    max-width: 720px;
+    min-height: 110px;
+    margin: 20px auto;
+    padding: 28px;
+
+    background: rgba(5,20,12,.55);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 25px;
+
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* CARTA */
+
+.carta {
+    max-width: 720px;
+    margin: 70px auto;
+    padding: 40px 35px;
+
+    background: #fff7dc;
+    color: #39321d;
+
+    border-radius: 8px;
+    box-shadow: 0 25px 70px rgba(0,0,0,.4);
+
+    transform: rotate(-.3deg);
+}
+
+.carta h2 {
+    color: #8a6815;
+    text-align: center;
+    margin-top: 0;
+}
+
+.carta p {
+    font-size: 1.08rem;
+    line-height: 1.9;
+}
+
+.firma {
+    text-align: right;
+    margin-top: 35px;
+    font-size: 1.2rem;
+}
+
+/* MÚSICA */
+
+.musica {
+    text-align: center;
+    margin: 35px auto;
+}
+
+.musica button {
+    padding: 13px 23px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: rgba(255,216,92,.15);
+    border: 1px solid rgba(255,216,92,.4);
+    color: #ffe27a;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal-contenido {
+    max-width: 600px;
+    width: 100%;
+
+    background: #fff8dc;
+    color: #382f1b;
+
+    padding: 35px;
+    border-radius: 25px;
+
+    text-align: center;
+    box-shadow: 0 30px 100px black;
+}
+
+.modal-contenido h2 {
+    color: #8a6815;
+}
+
+.cerrar {
+    float: right;
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.gatito {
+    font-size: 80px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    opacity: .65;
+    padding: 30px;
+}
+
+/* ANIMACIONES */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flotar {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* CELULAR */
+
+@media(max-width:600px) {
+
+    .campo {
+        height: 460px;
+        border-radius: 20px;
+    }
+
+    .flor {
+        font-size: 40px;
+    }
+
+    .carta {
+        margin: 50px 15px;
+        padding: 28px 22px;
+    }
+
+    .luna {
+        width: 60px;
+        height: 60px;
+        right: 7%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INICIO -->
+
+<section id="inicio">
+
+    <div class="inicio-contenido">
+
+        <div class="flor-inicio">🌻</div>
+
+        <h1>Para Kerin</h1>
+
+        <p class="subtitulo">
+            Hoy quería darte flores amarillas...
+            <br>
+            pero la distancia no me dejó hacerlo de la manera que quería.
+        </p>
+
+        <p class="subtitulo">
+            Así que hice un pequeño lugar para ti.
+        </p>
+
+        <button class="boton" onclick="entrar()">
+            Entrar al jardín 🌼
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- JARDÍN -->
+
+<section id="jardin">
+
+    <div class="encabezado">
+
+        <h2>El jardín de Kerin 🌻</h2>
+
+        <p>
+            Toca las flores.
+            Cada una guarda un pequeño recuerdo,
+            una cosa que me gusta de ti
+            o algo que quería decirte hoy.
+        </p>
+
+    </div>
+
+
+    <div class="campo">
+
+        <div class="luna"></div>
+
+        <div class="pasto"></div>
+
+        <button class="flor f1"
+        onclick="mensaje(
+        'Esta flor es por todas esas noches en las que nos desvelamos hablando por llamada. A veces se hacía demasiado tarde... pero ninguno quería ser el primero en irse.'
+        )">
+        🌻
+        </button>
+
+
+        <button class="flor f2"
+        onclick="mensaje(
+        'Esta es por todas las veces que jugamos juntos y yo siempre te acarreaba... okno 😂 Pero admito que me encanta compartir esos momentos contigo.'
+        )">
+        🌼
+        </button>
+
+
+        <button class="flor f3"
+        onclick="mensaje(
+        'Hay una cosa que nunca voy a olvidar: cuando me dijiste que yo era el hombre que siempre habías querido en tu vida. Creo que no sabes lo mucho que significó para mí.'
+        )">
+        🌻
+        </button>
+
+
+        <button class="flor f4"
+        onclick="mensaje(
+        'Hay una noche que guardo de una manera diferente, aquella película que vimos juntos. No sé si para ti fue igual, pero yo disfruté muchísimo simplemente estar contigo esa noche.'
+        )">
+        🌼
+        </button>
+
+
+        <button class="flor f5"
+        onclick="pinole()">
+        🌻
+        </button>
+
+
+        <button class="flor f6"
+        onclick="mensaje(
+        'Me encanta lo alegre que eres. Tienes esa capacidad de hacerme reír en cualquier momento con cualquier cosa random que se te ocurra. Solo tú sabes tratarme así.'
+        )">
+        🌼
+        </button>
+
+
+        <button class="flor f7"
+        onclick="mensaje(
+        'Me encanta esa parte intensa y atrevida de ti. No quiero que cambies eso. Me gusta que seas tú, con todo lo que te hace ser Kerin.'
+        )">
+        🌻
+        </button>
+
+    </div>
+
+
+    <div id="mensaje" class="mensaje">
+
+        Elige una flor 🌼
+
+    </div>
+
+
+    <!-- MÚSICA -->
+
+    <div class="musica">
+
+        <button onclick="musica()">
+
+            🎵 Reproducir nuestra canción
+
+        </button>
+
+        <p style="opacity:.6;font-size:.9rem;">
+            Sparks — Coldplay
+        </p>
+
+        <!--
+        
+        -->
+
+    </div>
+
+
+    <!-- CARTA -->
+
+    <article class="carta">
+
+        <h2>Una carta para ti 💌</h2>
+
+        <p>
+            Kerin,
+        </p>
+
+        <p>
+            Hoy quería darte flores amarillas.
+            Sé que no es lo mismo que recibirlas en persona,
+            y ojalá pudiera estar ahí para dártelas
+            con mis propias manos.
+        </p>
+
+        <p>
+            Pero quería encontrar una manera de acercarme
+            un poquito a ti, aunque estemos lejos.
+            Por eso hice este pequeño jardín digital.
+        </p>
+
+        <p>
+            No es un ramo de flores y tampoco puede
+            reemplazar el poder estar contigo,
+            pero cada parte de este lugar la hice pensando en ti.
+        </p>
+
+        <p>
+            Me encanta lo alegre que eres,
+            esa forma que tienes de hacerme reír
+            Me encanta que seas intensa y atrevida,
+            y sinceramente no quiero que cambies eso.
+        </p>
+
+        <p>
+            También me encanta tu belleza,
+            pero no solamente la que se ve por fuera.
+            Me encanta la persona que eres por dentro
+            y la manera tan especial que tienes de tratarme.
+        </p>
+
+        <p>
+            Me acuerdo de todas esas noches en llamada
+            en las que terminábamos desvelándonos,
+            de aquella vez que me dijiste que yo era
+            el hombre que siempre habías querido en tu vida...
+        </p>
+
+        <p>
+            Pero si tengo que elegir un recuerdo,
+            probablemente siempre voy a guardar
+            de una manera especial aquella noche
+            en la que vimos aquella película juntos.
+            El Diario de una pasión.
+            Disfruté muchísimo estar contigo esa noche.
+        </p>
+
+        <p>
+            Y sí...
+            también guardé un pequeño espacio para Pinole. 🐱
+        </p>
+
+        <p>
+            Quizá algún día podamos tenerlo de verdad.
+            Hasta entonces, quería que tuvieras este pequeño
+            jardín lleno de flores amarillas.
+        </p>
+
+        <p>
+            Feliz día de las flores amarillas, Kerin.
+        </p>
+
+        <p class="firma">
+
+            Con mucho cariño,<br>
+
+            <strong>Yako 💛</strong>
+
+        </p>
+
+    </article>
+
+
+    <footer>
+
+        Hecho especialmente para Kerin · 🌻
+
+    </footer>
+
+</section>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal">
+
+    <div class="modal-contenido">
+
+        <button class="cerrar" onclick="cerrar()">
+            ×
+        </button>
+
+        <div id="contenido-modal"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function entrar() {
+
+    document.getElementById("inicio").style.display = "none";
+
+    document.getElementById("jardin").style.display = "block";
+
+    window.scrollTo(0,0);
+
+}
+
+
+function mensaje(texto) {
+
+    document.getElementById("mensaje").innerHTML = texto;
+
+}
+
+
+function pinole() {
+
+    document.getElementById("contenido-modal").innerHTML = `
+
+        <div class="gatito">
+            🐱
+        </div>
+
+        <h2>
+            Esta flor es para Pinole
+        </h2>
+
+        <p>
+            Para ese pequeño gatito que todavía
+            no conocemos, pero cuyo nombre ya existe
+            gracias a ti.
+        </p>
+
+        <p>
+            Algún día cuando Pinole llegue de verdad,
+            espero poder conocerlo contigo.
+        </p>
+
+        <p>
+            Por ahora, quería dejarle un pequeño
+            lugar en este jardín. 💛
+        </p>
+
+    `;
+
+    document.getElementById("modal").style.display = "flex";
+
+}
+
+
+function cerrar() {
+
+    document.getElementById("modal").style.display = "none";
+
+}
+
+
+function musica() {
+
+    alert(
+        "Aquí pondremos Sparks de Coldplay cuando preparemos la versión final. 🎵"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
